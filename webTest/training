@@ -1,0 +1,30 @@
+CREATE TABLE dept (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(20),
+    location VARCHAR(20)
+);
+
+select * from dept;
+select * from employee;
+
+ALTER TABLE employee
+ADD deptId INTEGER,
+ADD CONSTRAINT fk_deptId FOREIGN KEY (deptId) REFERENCES dept(id);
+
+update employee set deptId = 1 where id = 171;
+update employee set deptId = 2 where id = 901;
+
+update employee set deptId = 3 where id = 3;
+
+
+insert into dept(id,name,location) values(1,'HR','Ahmedabad');
+insert into dept(id,name,location) values(2,'Technical','Bangalore');
+insert into dept(id,name,location) values(3,'Operations','Ahmedabad');
+
+select id, name, location from dept where id = (select min(id) from dept);
+
+select id, name, location from dept where id = (select max(id) from dept);
+
+select id, name, location  from dept where id = (select MIN(id) from dept where id < 2);
+
+
