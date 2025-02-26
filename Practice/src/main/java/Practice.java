@@ -9,6 +9,7 @@ public class Practice {
 	int id;
 	String name;
 	
+	
 	public Practice() {
 		
 	}
@@ -42,26 +43,30 @@ public class Practice {
 	public static void main(String []args) {
 		
 		
-		Practice p1 = new Practice(3,"Kiran");
-		Practice p2 = new Practice(4,"Hiran");
-		Practice p3 = new Practice(3,"Kiran");
-		Practice p4 = p1;
+//		String s1 = "Daaku";
+//		String s2 = "Daaku";
+//		String s3 = s1;
+//		System.out.println(s1==s3);
+//		Practice p1 = new Practice(3,"Kiran");
+//		Practice p2 = new Practice(4,"Hiran");
+//		Practice p3 = new Practice(3,"Kiran");
+//		Practice p4 = p1;
 //		Practice p2 = new Practice(4,"Hiran");
 
 //		System.out.println(p1.equals(p2));
 //		System.out.println(p1.equals(p3));
 //		System.out.println(p1.equals(p4));
-//		
+		
 //		String s1 = "Indrajeet";
 //		System.out.println("Indrajeet".equals(s1));
 //		System.out.println(s1=="Indrajeet");
 		
-		System.out.println(p1.hashCode()==p4.hashCode());
-		System.out.println(p1.hashCode()==p3.hashCode());
-		System.out.println("p1: "+p1.hashCode());
-		System.out.println("p2: "+p2.hashCode());
-		System.out.println("p3: "+p3.hashCode());
-		System.out.println("p4: "+p4.hashCode());
+//		System.out.println(p1.hashCode()==p4.hashCode());
+//		System.out.println(p1.hashCode()==p3.hashCode());
+//		System.out.println("p1: "+p1.hashCode());
+//		System.out.println("p2: "+p2.hashCode());
+//		System.out.println("p3: "+p3.hashCode());
+//		System.out.println("p4: "+p4.hashCode());
 
 
 		
