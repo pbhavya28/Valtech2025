@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -19,16 +20,21 @@ public class Orders {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "orderseq")
 	@SequenceGenerator(name = "orderseq", sequenceName = "order_seq",allocationSize = 1)
 	private int id;
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	private Customer customerId;
-	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	
+	@ManyToOne(targetEntity =Customer.class ,cascade = CascadeType.ALL,fetch =  FetchType.LAZY)
+	@JoinColumn(name="customerId" ,referencedColumnName = "id")
+	private Customer customer;
+	
+	@OneToMany(targetEntity = LineOrder.class, mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<LineOrder> lineOrder;
+	
 	private String status;
+	
 	public Orders() {}
-	public Orders(Customer customerId, Set<LineOrder> lineOrder, String status) {
+	public Orders(Customer customer, Set<LineOrder> lineOrder, String status) {
 //		super();
 //		this.id = id;
-		this.customerId = customerId;
+		this.customer = customer;
 		this.lineOrder = lineOrder;
 		this.status = status;
 	}
@@ -38,11 +44,11 @@ public class Orders {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Customer getCustomerId() {
-		return customerId;
+	public Customer getCustomer() {
+		return customer;
 	}
-	public void setCustomerId(Customer customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	public Set<LineOrder> getLineOrder() {
 		return lineOrder;

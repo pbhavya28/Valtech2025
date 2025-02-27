@@ -1,4 +1,6 @@
-package spring.ioc;
+package com.valtech.training.first;
+
+//package spring.ioc;
 
 public interface SimpleInterest {
 

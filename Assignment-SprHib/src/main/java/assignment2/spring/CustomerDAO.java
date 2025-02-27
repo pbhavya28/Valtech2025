@@ -2,7 +2,7 @@ package assignment2.spring;
 
 import java.util.Set;
 
-public interface CustomerService {
+public interface CustomerDAO {
 
 	void save (Customer c);
 	void update (Customer c);

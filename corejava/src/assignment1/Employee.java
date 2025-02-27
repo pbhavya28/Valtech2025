@@ -335,7 +335,7 @@ public class Employee implements Comparable<Employee> {
             	        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
             	System.out.println(sortedMapLevelSal);
-            	 System.out.println("*************************************************************************");
+            	System.out.println("*************************************************************************");
      	 		System.out.println("2nd Method: ");
      	 		System.out.println("*************************************************************************");
 //     	 		

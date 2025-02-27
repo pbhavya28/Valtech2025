@@ -1,5 +1,9 @@
-package spring.ioc;
+package com.valtech.training.first;
 
+import org.springframework.stereotype.Component;
+
+//package spring.ioc;
+@Component
 public class ArithmeticImpl implements Arithmetic {
 
 	@Override

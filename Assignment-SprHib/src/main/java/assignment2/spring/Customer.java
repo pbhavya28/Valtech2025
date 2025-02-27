@@ -1,9 +1,14 @@
 package assignment2.spring;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,6 +24,9 @@ public class Customer {
 	private int age;
 	private String address;
 	private String per_address;
+	
+	@OneToMany(targetEntity = Orders.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "")
+	private Set<Order> orders;
 	
 	public Customer() {}
 
@@ -69,6 +77,14 @@ public class Customer {
 
 	public void setPer_address(String per_address) {
 		this.per_address = per_address;
+	}
+
+	public Set<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 	
 	

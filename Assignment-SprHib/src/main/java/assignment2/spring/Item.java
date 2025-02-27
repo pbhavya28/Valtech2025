@@ -1,9 +1,14 @@
 package assignment2.spring;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -18,6 +23,9 @@ public class Item {
 	private int current_qty;
 	private int reOrder_qty;
 	private int max_qty;
+	
+	@OneToMany(targetEntity = LineOrder.class, cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "item")
+	private Set<LineOrder> getLineItems;
 	
 	public Item() {}
 
@@ -77,6 +85,18 @@ public class Item {
 
 	public void setMax_qty(int max_qty) {
 		this.max_qty = max_qty;
+	}
+
+	public Set<LineOrder> getGetLineItems() {
+		return getLineItems;
+	}
+
+	public void setGetLineItems(Set<LineOrder> getLineItems) {
+		this.getLineItems = getLineItems;
+	}
+
+	public int getReOrder_qty() {
+		return reOrder_qty;
 	}
 	
 	

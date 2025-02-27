@@ -2,7 +2,7 @@ package assignment2.spring;
 
 import java.util.Set;
 
-public interface ItemService {
+public interface ItemDAO{
 
 	void save(Item i);
 	void update(Item i);

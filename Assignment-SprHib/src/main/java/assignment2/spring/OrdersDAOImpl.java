@@ -5,42 +5,43 @@ import java.util.Set;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-public class ItemServiceImpl implements ItemService {
-
+public class OrdersDAOImpl implements OrdersDAO {
+	
 	private javax.sql.DataSource dataSource;
+
 	private SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+	
 
 	@Override
-	public void save(Item i) {
-		new HibernateTemplate(sessionFactory).save(i);
-		
+	public void save(Orders o) {
+		new HibernateTemplate(sessionFactory).save(o);
 	}
 
 	@Override
-	public void update(Item i) {
-		
-		new HibernateTemplate(sessionFactory).update(i);
-		
+	public void update(Orders o) {
+		new HibernateTemplate(sessionFactory).update(o);
+
 	}
+
 	@Override
 	public void delete(int id) {
 		new HibernateTemplate(sessionFactory).delete(get(id));
+
 	}
 
 	@Override
-	public Item get(int id) {
-		return new HibernateTemplate(sessionFactory).load(Item.class, id);
+	public Orders get(int id) {
+		
+		return new HibernateTemplate(sessionFactory).load(Orders.class, id);
 	}
 
 	@Override
-	public Set<Item> getAll() {
-		return (Set<Item>) new HibernateTemplate(sessionFactory).find("from Item i");
+	public Set<Orders> getAll() {
+		return (Set<Orders>) new HibernateTemplate(sessionFactory).find("from Orders o");
 	}
-
-	
 
 }

@@ -16,14 +16,12 @@ public class EmployeeHibernateDAOImpl implements EmployeeDAO {
 
 	@Override
 	public void save(Employee e) {
-
 		new HibernateTemplate(sessionFactory).save(e);
 	}
 
 	@Override
 	public void update(Employee e) {
 		new HibernateTemplate(sessionFactory).update(e);
-
 	}
 
 	@Override
