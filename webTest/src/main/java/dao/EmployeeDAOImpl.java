@@ -150,134 +150,6 @@ public EmployeeDAOImpl(ServletContext sc) {
 				return emps;
 	}
 	
-	public List<Employee> sortByIdAsc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingLong(Employee::getId))  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByAgeDesc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingLong(Employee::getAge).reversed())  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByAgeAsc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingLong(Employee::getAge))  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByIdDesc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingLong(Employee::getId).reversed())  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByNameDesc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparing(Employee::getName).reversed())  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByNameAsc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparing(Employee::getName))  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByGenderDesc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparing(Employee::getGender).reversed())  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByGenderAsc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparing(Employee::getGender))  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortBySalaryDesc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortBySalaryAsc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingDouble(Employee::getSalary))  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByExpDesc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingInt(Employee::getExperience).reversed())  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByExpAsc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingInt(Employee::getExperience))  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByLevelDesc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingInt(Employee::getLevel).reversed())  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByLevelAsc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingInt(Employee::getLevel))  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByDepDesc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingInt(Employee::getDeptId).reversed())  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
-	public List<Employee> sortByDepAsc(){
-		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
-		return l_emp.getAll().stream()
-                .sorted(Comparator.comparingInt(Employee::getDeptId))  // Sort by ID
-                .collect(Collectors.toList());
-		
-	}
-	
 	public List<Employee> getEmpByDept(int deptId){
 		
 		List<Employee> emps = new ArrayList<Employee>();
@@ -294,45 +166,182 @@ public EmployeeDAOImpl(ServletContext sc) {
 				return emps;
 		
 	}
-	public List<Employee> getSearchByName(String name){
-		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
-	return dao.getAll().stream().filter(employee -> employee.getName().toLowerCase().contains(name))
-				.collect(Collectors.toList());
-	}
+}	
+
 	
-	public List<Employee> getSearchBySal (long salary){
-		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
-
-		return dao.getAll().stream().filter(employee -> employee.getSalary() >=salary)
-				.collect(Collectors.toList());
-	}
 	
-	public List<Employee> getSearchByLevel (int level){
-		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
-
-		return dao.getAll().stream().filter(employee -> employee.getLevel()== level)
-				.collect(Collectors.toList());
-	}
 	
-	public List<Employee> getSearchByAge (int age){
-		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
-
-		return dao.getAll().stream().filter(employee -> employee.getAge()== age)
-				.collect(Collectors.toList());
-	}
 	
-	public List<Employee> getSearchByExp (int exp){
-		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
-
-		return dao.getAll().stream().filter(employee -> employee.getExperience()== exp)
-				.collect(Collectors.toList());
-	}
 	
-	public static void main(String[] args) {
-//		EmployeeDAO dao = new EmployeeDAOImpl();
-//		System.out.println(dao.sortByNameAsc());
-		
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	public List<Employee> sortByIdAsc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingLong(Employee::getId))  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByAgeDesc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingLong(Employee::getAge).reversed())  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByAgeAsc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingLong(Employee::getAge))  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByIdDesc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingLong(Employee::getId).reversed())  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByNameDesc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparing(Employee::getName).reversed())  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByNameAsc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparing(Employee::getName))  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByGenderDesc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparing(Employee::getGender).reversed())  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByGenderAsc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparing(Employee::getGender))  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortBySalaryDesc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortBySalaryAsc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingDouble(Employee::getSalary))  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByExpDesc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingInt(Employee::getExperience).reversed())  // Sort by ID
+//                .collect(Collectors.toList());
+//		
+//	}
+//	
+//	public List<Employee> sortByExpAsc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingInt(Employee::getExperience))  // Sort by ID
+//                .collect(Collectors.toList());	
+//	}
+//	
+//	public List<Employee> sortByLevelDesc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingInt(Employee::getLevel).reversed())  // Sort by ID
+//                .collect(Collectors.toList());	
+//	}
+//	
+//	public List<Employee> sortByLevelAsc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingInt(Employee::getLevel))  // Sort by ID
+//                .collect(Collectors.toList());	
+//	}
+//	
+//	public List<Employee> sortByDepDesc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingInt(Employee::getDeptId).reversed())  // Sort by ID
+//                .collect(Collectors.toList());	
+//	}
+//	
+//	public List<Employee> sortByDepAsc(){
+//		EmployeeDAO l_emp = new EmployeeDAOImpl(this.sc); 
+//		return l_emp.getAll().stream()
+//                .sorted(Comparator.comparingInt(Employee::getDeptId))  // Sort by ID
+//                .collect(Collectors.toList());	
+//	}
+//	
+//	public List<Employee> getSearchByName(String name){
+//		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
+//	return dao.getAll().stream().filter(employee -> employee.getName().toLowerCase().contains(name))
+//				.collect(Collectors.toList());
+//	}
+//	
+//	public List<Employee> getSearchBySal (long salary){
+//		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
+//
+//		return dao.getAll().stream().filter(employee -> employee.getSalary() >=salary)
+//				.collect(Collectors.toList());
+//	}
+//	
+//	public List<Employee> getSearchByLevel (int level){
+//		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
+//
+//		return dao.getAll().stream().filter(employee -> employee.getLevel()== level)
+//				.collect(Collectors.toList());
+//	}
+//	
+//	public List<Employee> getSearchByAge (int age){
+//		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
+//
+//		return dao.getAll().stream().filter(employee -> employee.getAge()== age)
+//				.collect(Collectors.toList());
+//	}
+//	
+//	public List<Employee> getSearchByExp (int exp){
+//		EmployeeDAO dao = new EmployeeDAOImpl(this.sc);
+//
+//		return dao.getAll().stream().filter(employee -> employee.getExperience()== exp)
+//				.collect(Collectors.toList());
+//	}
 
 
-}
+
+

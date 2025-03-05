@@ -9,5 +9,6 @@ public interface ItemDAO{
 	void delete(int id);
 	Item get(int id);
 	Set<Item> getAll();
+	void merge(Item i);
 	
 }

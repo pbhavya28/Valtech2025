@@ -1,10 +1,13 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import dao.Employee;
 import dao.EmployeeDAO;
 import dao.EmployeeDAOImpl;
+import dao.EmployeeService;
+import dao.EmployeeServiceImpl;
 import dao.Employee.Gender;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
@@ -18,11 +21,15 @@ import jakarta.servlet.http.HttpServletResponse;
 public class EmployeesServlet extends HttpServlet {
 
 	private EmployeeDAO dao;
+	private EmployeeService edao = new EmployeeServiceImpl();
+	
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		dao = new EmployeeDAOImpl(config.getServletContext());		
+		dao = new EmployeeDAOImpl(config.getServletContext());
 	}
+	
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String operation = req.getParameter("operation");
@@ -98,12 +105,13 @@ public class EmployeesServlet extends HttpServlet {
 //		List<Employee>
 //		System.out.println("qqqqqqqqqqqqqq"+nameComb + " "+ salaryComb+" "+levelComb+" "+ageComb+" "+expComb);
 //		------------------------------------------
+		List<Employee> employees = dao.getAll();
 		String searchOption = req.getParameter("searchOption");
 		if("name".equals(searchOption)) {
 //			String search_value = (String)req.getParameter("search_value");
 //			System.out.println(search_value);
 //			System.out.println(dao.getSearchByName(req.getParameter("search_value")));
-     		req.setAttribute("emps", dao.getSearchByName(req.getParameter("search_value").toLowerCase()));
+     		req.setAttribute("emps", edao.getSearchByName(req.getParameter("search_value").toLowerCase(),employees));
 //     		System.out.println(req.getAttribute("emps")+"jjjj");
             req.getRequestDispatcher("employees.jsp").forward(req, resp);
             return;		
@@ -112,7 +120,7 @@ public class EmployeesServlet extends HttpServlet {
 //			String search_value = (String)req.getParameter("search_value");
 //			System.out.println(search_value);
 //			System.out.println(dao.getSearchByName(req.getParameter("search_value")));
-     		req.setAttribute("emps", dao.getSearchBySal(Long.parseLong(req.getParameter("search_value"))));
+     		req.setAttribute("emps", edao.getSearchBySal(Long.parseLong(req.getParameter("search_value")),employees));
 //     		System.out.println(req.getAttribute("emps")+"jjjj");
             req.getRequestDispatcher("employees.jsp").forward(req, resp);
             return;		
@@ -121,7 +129,7 @@ public class EmployeesServlet extends HttpServlet {
 //			String search_value = (String)req.getParameter("search_value");
 //			System.out.println(search_value);
 //			System.out.println(dao.getSearchByName(req.getParameter("search_value")));
-     		req.setAttribute("emps", dao.getSearchByLevel(Integer.parseInt(req.getParameter("search_value"))));
+     		req.setAttribute("emps", edao.getSearchByLevel(Integer.parseInt(req.getParameter("search_value")),employees));
 //     		System.out.println(req.getAttribute("emps")+"jjjj");
             req.getRequestDispatcher("employees.jsp").forward(req, resp);
             return;		
@@ -130,7 +138,7 @@ public class EmployeesServlet extends HttpServlet {
 //			String search_value = (String)req.getParameter("search_value");
 //			System.out.println(search_value);
 //			System.out.println(dao.getSearchByName(req.getParameter("search_value")));
-     		req.setAttribute("emps", dao.getSearchByAge(Integer.parseInt(req.getParameter("search_value"))));
+     		req.setAttribute("emps", edao.getSearchByAge(Integer.parseInt(req.getParameter("search_value")),employees));
 //     		System.out.println(req.getAttribute("emps")+"jjjj");
             req.getRequestDispatcher("employees.jsp").forward(req, resp);
             return;		
@@ -139,14 +147,14 @@ public class EmployeesServlet extends HttpServlet {
 //			String search_value = (String)req.getParameter("search_value");
 //			System.out.println(search_value);
 //			System.out.println(dao.getSearchByName(req.getParameter("search_value")));
-     		req.setAttribute("emps", dao.getSearchByExp(Integer.parseInt(req.getParameter("search_value"))));
+     		req.setAttribute("emps", edao.getSearchByExp(Integer.parseInt(req.getParameter("search_value")),employees));
 //     		System.out.println(req.getAttribute("emps")+"jjjj");
             req.getRequestDispatcher("employees.jsp").forward(req, resp);
             return;		
 		}
 
 		else {
-
+			
 			String sortBy = req.getParameter("sortBy");
 	        String sortOrder = req.getParameter("sortOrder");
 	        if (sortOrder == null) {
@@ -154,19 +162,19 @@ public class EmployeesServlet extends HttpServlet {
 	        }
 	        if("idSort".equals(sortBy)) {
 	             	if ("descending".equals(sortOrder)) {
-	             		req.setAttribute("emps", dao.sortByIdDesc());
+	             		req.setAttribute("emps", edao.sortByIdDesc(employees));
 	             	} 
 	             	else {
-	        		req.setAttribute("emps", dao.sortByIdAsc());
+	        		req.setAttribute("emps", edao.sortByIdAsc(employees));
 
 	             	}
 	        }
 	        else if("nameSort".equals(sortBy)){
 	        	 	if ("descending".equals(sortOrder)) {
-	        	 		req.setAttribute("emps", dao.sortByNameDesc());
+	        	 		req.setAttribute("emps", edao.sortByNameDesc(employees));
 	        	 	} 
 	        	 	else {
-	        	 		req.setAttribute("emps", dao.sortByNameAsc());
+	        	 		req.setAttribute("emps", edao.sortByNameAsc(employees));
 
 	        	 	}
 	        	
@@ -174,64 +182,64 @@ public class EmployeesServlet extends HttpServlet {
 	        }
 	        else if("ageSort".equals(sortBy)){
 	    	 	if ("descending".equals(sortOrder)) {
-	    	 		req.setAttribute("emps", dao.sortByAgeDesc());
+	    	 		req.setAttribute("emps", edao.sortByAgeDesc(employees));
 	    	 	} 
 	    	 	else {
-	    	 		req.setAttribute("emps", dao.sortByAgeAsc());
+	    	 		req.setAttribute("emps", edao.sortByAgeAsc(employees));
 
 	    	 	}
 	        }
 	    	else if("genderSort".equals(sortBy)){
 	        	 	if ("descending".equals(sortOrder)) {
-	        	 		req.setAttribute("emps", dao.sortByGenderDesc());
+	        	 		req.setAttribute("emps", edao.sortByGenderDesc(employees));
 	        	 	} 
 	        	 	else {
-	        	 		req.setAttribute("emps", dao.sortByGenderAsc());
+	        	 		req.setAttribute("emps", edao.sortByGenderAsc(employees));
 
 	        	 	}	
 	    	}
 	    	else if("salarySort".equals(sortBy)){
 	    	 	if ("descending".equals(sortOrder)) {
-	    	 		req.setAttribute("emps", dao.sortBySalaryDesc());
+	    	 		req.setAttribute("emps", edao.sortBySalaryDesc(employees));
 	    	 	} 
 	    	 	else {
-	    	 		req.setAttribute("emps", dao.sortBySalaryAsc());
+	    	 		req.setAttribute("emps", edao.sortBySalaryAsc(employees));
 
 	    	 	}	
 		}
 	    	else if("expSort".equals(sortBy)){
 	    	 	if ("descending".equals(sortOrder)) {
-	    	 		req.setAttribute("emps", dao.sortByExpDesc());
+	    	 		req.setAttribute("emps", edao.sortByExpDesc(employees));
 	    	 	} 
 	    	 	else {
-	    	 		req.setAttribute("emps", dao.sortByExpAsc());
+	    	 		req.setAttribute("emps", edao.sortByExpAsc(employees));
 
 	    	 	}	
 		}
 	    	else if("levelSort".equals(sortBy)){
 	    	 	if ("descending".equals(sortOrder)) {
-	    	 		req.setAttribute("emps", dao.sortByLevelDesc());
+	    	 		req.setAttribute("emps", edao.sortByLevelDesc(employees));
 	    	 	} 
 	    	 	else {
-	    	 		req.setAttribute("emps", dao.sortByLevelAsc());
+	    	 		req.setAttribute("emps", edao.sortByLevelAsc(employees));
 
 	    	 	}	
 		}
 	    	else if("depSort".equals(sortBy)){
 	    	 	if ("descending".equals(sortOrder)) {
-	    	 		req.setAttribute("emps", dao.sortByDepDesc());
+	    	 		req.setAttribute("emps", edao.sortByDepDesc(employees));
 	    	 	} 
 	    	 	else {
-	    	 		req.setAttribute("emps", dao.sortByDepAsc());
+	    	 		req.setAttribute("emps", edao.sortByDepAsc(employees));
 
 	    	 	}	
 		}
 	    	else {
 	         	if ("descending".equals(sortOrder)) {
-	         		req.setAttribute("emps", dao.sortByIdDesc());
+	         		req.setAttribute("emps", edao.sortByIdDesc(employees));
 	         	} 
 	         	else {
-	    		req.setAttribute("emps", dao.sortByIdAsc());
+	    		req.setAttribute("emps", edao.sortByIdAsc(employees));
 
 	         	}
 	    }

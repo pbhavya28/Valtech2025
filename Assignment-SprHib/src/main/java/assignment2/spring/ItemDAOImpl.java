@@ -4,7 +4,10 @@ import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+//@Transactional(propagation = Propagation.SUPPORTS)
 public class ItemDAOImpl implements ItemDAO {
 
 	private javax.sql.DataSource dataSource;
@@ -15,12 +18,14 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
+//	@Transactional(propagation = Propagation.REQUIRED)
 	public void save(Item i) {
 		new HibernateTemplate(sessionFactory).save(i);
 		
 	}
 
 	@Override
+//	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(Item i) {
 		
 		new HibernateTemplate(sessionFactory).update(i);
@@ -41,6 +46,12 @@ public class ItemDAOImpl implements ItemDAO {
 		return (Set<Item>) new HibernateTemplate(sessionFactory).find("from Item i");
 	}
 
+	@Override
+	public void merge(Item i) {
+		
+		new HibernateTemplate(sessionFactory).merge(i);
+		
+	} 
 	
 
 }

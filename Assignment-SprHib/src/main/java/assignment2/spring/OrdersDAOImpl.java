@@ -4,7 +4,13 @@ import java.util.Set;
 
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
+//@Transactional(propagation = Propagation.SUPPORTS)
 public class OrdersDAOImpl implements OrdersDAO {
 	
 	private javax.sql.DataSource dataSource;
@@ -17,11 +23,13 @@ public class OrdersDAOImpl implements OrdersDAO {
 	
 
 	@Override
+//	@Transactional(propagation = Propagation.REQUIRED)
 	public void save(Orders o) {
 		new HibernateTemplate(sessionFactory).save(o);
 	}
 
 	@Override
+//	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(Orders o) {
 		new HibernateTemplate(sessionFactory).update(o);
 
@@ -42,6 +50,20 @@ public class OrdersDAOImpl implements OrdersDAO {
 	@Override
 	public Set<Orders> getAll() {
 		return (Set<Orders>) new HibernateTemplate(sessionFactory).find("from Orders o");
+	}
+
+
+	@Override
+	public void persist(Orders o) {
+		 new HibernateTemplate(sessionFactory).persist(o);
+		
+	}
+
+
+	@Override
+	public void merge(Orders o) {
+		new HibernateTemplate(sessionFactory).persist(o);
+		
 	}
 
 }

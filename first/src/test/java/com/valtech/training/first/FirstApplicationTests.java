@@ -8,11 +8,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.valtech.training.first.entities.Question;
 import com.valtech.training.first.services.QuestionService;
 
 @SpringBootTest
+//@Transactional(propagation = Propagation.REQUIRED)
 class FirstApplicationTests {
 
 	@Autowired
@@ -31,8 +34,9 @@ class FirstApplicationTests {
 	}
 	
 	@Test
+//	@Rollback()
 	void questionService() {
-		
+		initData();
 		assertEquals(6, questionService.countByTopic("Java"));
 		assertEquals(5, questionService.countByTopic("gk"));
 		assertEquals(2, questionService.countByTopicAndQuestionTextContains("Java","Exception"));

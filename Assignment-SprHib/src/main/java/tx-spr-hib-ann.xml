@@ -10,6 +10,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/tx spring-tx-3.2.xsd h
 	<p:bean class="assignment2.spring.OrdersDAOImpl"></p:bean>
 	<p:bean class="assignment2.spring.LineOrderDAOImpl"></p:bean>
 	<p:bean class="assignment2.spring.Customer"></p:bean>
+	<p:bean class="assignment2.spring.ServiceImpl"></p:bean>
+	<p:bean class="assignment2.spring.InventoryServiceImpl"></p:bean>
 	
 	
 	<!-- <p:bean class="assignment2.spring.EmployeeHibernateDAOImpl"></p:bean> --> 

@@ -9,4 +9,6 @@ public interface OrdersDAO {
 	void delete(int id);
 	Orders get(int id);
 	Set<Orders> getAll();
+	void persist(Orders o);
+	void merge(Orders o);
 }

@@ -16,8 +16,14 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import assignment1.Employee.Gender;
+//import dao.Employee;
+//import dao.EmployeeDAO;
+//import dao.EmployeeDAOImpl;
+//import dao.Employee;
+//import dao.EmployeeDAO;
+//import dao.EmployeeDAOImpl;
 
-class EmployeeTest {
+class EmployeeTest{
 	
 	@Test
 	void testHashCode() {
@@ -40,7 +46,9 @@ class EmployeeTest {
 		Employee e = new Employee(136,"Sahil",43,90000,3,3,Gender.MALE);
 		assertEquals(",id: 136 ,name:Sahil ,age: 43 ,gender: MALE ,experience: 3 ,salary: 90000.0 ,level: 3",e.toString());
 	}
+	
 
+	
 	private Set<Employee> addEmployees(){
 		Set<Employee> employees = new TreeSet<Employee>();
 		employees.add(Employee.builder().id(100).name("John")
@@ -92,31 +100,26 @@ class EmployeeTest {
 		
 	}
 
-	@Test
 	List<Employee> getEmployeeBySalary(float salary) {
 		return addEmployees().stream().filter(employee -> employee.getSalary() > salary)
 				.collect(Collectors.toList());
 	}
 	
-	@Test
 	List<Employee> getEmployeeByName(String name) {
 		return addEmployees().stream().filter(employee -> employee.getName().equalsIgnoreCase(name))
 				.collect(Collectors.toList());
 	}
 	
-	@Test
 	List<Employee> getEmployeeByNameContains(String name) {
 		return addEmployees().stream().filter(employee -> employee.getName().contains(name))
 				.collect(Collectors.toList());
 	}
 	
-	@Test
 	List<Employee> getEmployeeByLevel(int level) {
 		return addEmployees().stream().filter(employee -> employee.getLevel()== level)
 				.collect(Collectors.toList());
 	}
 	
-	@Test
 	List<Employee> getEmployeeByLevelAndSalary(int level, float salary) {
 		return addEmployees().stream().filter(employee -> employee.getLevel()== level && employee.getSalary() == salary)
 				.collect(Collectors.toList());
@@ -130,18 +133,44 @@ class EmployeeTest {
 		return addEmployees().stream().filter(employee -> employee.getAge()== age).mapToDouble(Employee::getSalary).sum();
 	}
 
-	
-	@Test
 	List<Employee> sortedEmployees(){
 		return addEmployees().stream().sorted().toList();
 	}
+	List<Employee> sortByNameDesc(){
+		return addEmployees().stream()
+                .sorted(Comparator.comparing(Employee::getName).reversed())  // Sort by ID
+                .collect(Collectors.toList());	
+	}
+	public List<Employee> sortByGenderAsc(){
+		return addEmployees().stream()
+                .sorted(Comparator.comparing(Employee::getGender))  // Sort by ID
+                .collect(Collectors.toList());	
+	}
 	
-	@Test
+	public List<Employee> sortBySalaryDesc(){
+		return addEmployees().stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())  // Sort by ID
+                .collect(Collectors.toList());
+	}
+	
+	public List<Employee> sortBySalaryAsc(){
+		return addEmployees().stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary))  // Sort by ID
+                .collect(Collectors.toList());	
+	}
+	
+	public List<Employee> sortByExpDesc(){
+		return addEmployees().stream()
+                .sorted(Comparator.comparingInt(Employee::getExperience).reversed())  // Sort by ID
+                .collect(Collectors.toList());	
+	}
+	
+	
 	List<Integer> MapEmployeesByAge(){
 		return addEmployees().stream().map(employee -> employee.getAge())
 				.collect(Collectors.toList());
 	}
-	@Test
+	
 	Map<Gender, List<String>> employeesListByGender() { 
 		return addEmployees().stream().collect(Collectors.groupingBy(
           Employee::getGender, Collectors.mapping(Employee::getName, Collectors.toList())));
@@ -163,6 +192,7 @@ class EmployeeTest {
 //		employeesListByGender().forEach((gender, names) -> {
 //	          System.out.println("Gender: " + gender);
 //	          System.out.println("Employees: " + names);});
+		System.out.println(sortByNameDesc());
 
 	}
 	
