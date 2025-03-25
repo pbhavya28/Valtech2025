@@ -7,7 +7,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import dao.Employee.Gender;
+import entities.Employee;
+import entities.Employee.Gender;
 
 
 

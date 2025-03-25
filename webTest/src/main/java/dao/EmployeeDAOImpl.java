@@ -10,10 +10,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//import assignment1.Employee;
-//import assignment1.Employee;
-//import assignment1.Employee;
-import dao.Employee.Gender;
+import entities.Employee;
+import entities.Employee.Gender;
 import jakarta.servlet.ServletContext;
 //import day4.EmployeeDAO;
 //import day4.EmployeeDAOImpl;

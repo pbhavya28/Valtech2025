@@ -1,4 +1,4 @@
-<%@ page import = "dao.Employee"
+<%@ page import = "entities.Employee"
 	import = "dao.EmployeeDAO"
 	import = "java.util.List"
 	language="java" contentType="text/html; charset=UTF-8"

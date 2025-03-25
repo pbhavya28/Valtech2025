@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<span style="color: red"> ${message}</span>
 <form method="post" action="login">
 	<table>
 		<tr>

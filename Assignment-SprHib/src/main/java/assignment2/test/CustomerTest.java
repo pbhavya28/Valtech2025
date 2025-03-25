@@ -3,18 +3,16 @@ package assignment2.test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import assignment2.spring.Customer;
-import assignment2.spring.Customer.State;
-import assignment2.spring.CustomerDAO;
 
-import assignment2.spring.Item;
-import assignment2.spring.ItemDAO;
-import assignment2.spring.LineOrder;
-import assignment2.spring.LineOrderDAO;
-import assignment2.spring.Orders;
-import assignment2.spring.Orders.Status;
-import assignment2.spring.OrdersDAO;
-import assignment2.spring.Service;
+
+import assignment2.spring.dao.CustomerDAO;
+import assignment2.spring.dao.ItemDAO;
+import assignment2.spring.dao.LineOrderDAO;
+import assignment2.spring.dao.OrdersDAO;
+import assignment2.spring.entities.Item;
+import assignment2.spring.entities.LineOrder;
+import assignment2.spring.entities.Orders;
+import assignment2.spring.service.Service;
 
 
 
@@ -30,6 +28,10 @@ public class CustomerTest {
 		Service s = ctx.getBean(Service.class);
 		
 		
+//		is.delete(5);
+		is.get(1);
+		cs.get(1);
+//		System.out.println(cs.getAll());
 		//Customer placing new item
 		/* 
 		 * Customer details - 
@@ -38,16 +40,19 @@ public class CustomerTest {
 		 * 
 		 * 
 		 * */
-		Customer c2 = new Customer("Indrajeet",23,"Naroda","Chandkheda");
-		c2.setState(State.DISABLED);
-		cs.save(c2);
-		LineOrder lo1 = new LineOrder();
-		lo1.setItem(is.get(1));
-		lo1.setQty(6);
+//		Customer c2 = new Customer("Indrajeet",23,"Naroda","Chandkheda");
+//		c2.setState(State.DISABLED);
+//		cs.save(c2);
+//		LineOrder lo1 = new LineOrder();
+//		Item item = is.get(8);
+//		System.out.println(item.getCurrentQty());
+//		lo1.setItem(is.get(1));
 //		
-		LineOrder lo2 = new LineOrder();
-		lo2.setItem(is.get(11));
-		lo2.setQty(1);
+//		lo1.setQty(6);
+////		
+//		LineOrder lo2 = new LineOrder();
+//		lo2.setItem(is.get(11));
+//		lo2.setQty(1);
 //		
 //		LineOrder lo2 = new LineOrder();
 //		lo2.setItem(is.get(5));
@@ -57,15 +62,14 @@ public class CustomerTest {
 //		lo3.setItem(is.get(7));
 //		lo3.setQty(7);
 //		
-		Orders o = new Orders();
-////		
-		o.setCustomer(cs.get(10));
-		o.addLineOrder(lo1);
-		o.addLineOrder(lo2);
+//		Orders o = new Orders();	
+//		o.setCustomer(cs.get(10));
+//		o.addLineOrder(lo1);
+//		o.addLineOrder(lo2);
 //		o.addLineOrder(lo2);
 //		o.addLineOrder(lo3);
 //		o.setStatus(Status.IN_PROGRESS);;
-		s.saveOrder(o);
+//		s.saveOrder(o);
 //		s.saveLineOrder(lo1);
 //		ls.save(lo1);
 //		ls.save(lo1);

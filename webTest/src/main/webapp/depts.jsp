@@ -1,5 +1,5 @@
 <%@ page language="java"
-	import = "dao.Employee"
+	import = "entities.Employee"
 	import = "java.util.List"
 	 contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

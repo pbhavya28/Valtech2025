@@ -2,7 +2,8 @@ package dao;
 
 import java.util.List;
 
-import servlets.Dept;
+import entities.Dept;
+import entities.Employee;
 
 //import assignment1.Employee;
 

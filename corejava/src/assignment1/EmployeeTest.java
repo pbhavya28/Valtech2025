@@ -138,30 +138,30 @@ class EmployeeTest{
 	}
 	List<Employee> sortByNameDesc(){
 		return addEmployees().stream()
-                .sorted(Comparator.comparing(Employee::getName).reversed())  // Sort by ID
+                .sorted(Comparator.comparing(Employee::getName).reversed()) 
                 .collect(Collectors.toList());	
 	}
 	public List<Employee> sortByGenderAsc(){
 		return addEmployees().stream()
-                .sorted(Comparator.comparing(Employee::getGender))  // Sort by ID
+                .sorted(Comparator.comparing(Employee::getGender))  
                 .collect(Collectors.toList());	
 	}
 	
 	public List<Employee> sortBySalaryDesc(){
 		return addEmployees().stream()
-                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())  // Sort by ID
+                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())  
                 .collect(Collectors.toList());
 	}
 	
 	public List<Employee> sortBySalaryAsc(){
 		return addEmployees().stream()
-                .sorted(Comparator.comparingDouble(Employee::getSalary))  // Sort by ID
+                .sorted(Comparator.comparingDouble(Employee::getSalary)) 
                 .collect(Collectors.toList());	
 	}
 	
 	public List<Employee> sortByExpDesc(){
 		return addEmployees().stream()
-                .sorted(Comparator.comparingInt(Employee::getExperience).reversed())  // Sort by ID
+                .sorted(Comparator.comparingInt(Employee::getExperience).reversed())  
                 .collect(Collectors.toList());	
 	}
 	

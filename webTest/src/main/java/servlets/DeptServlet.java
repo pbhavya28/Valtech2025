@@ -2,8 +2,11 @@ package servlets;
 
 import java.io.IOException;
 
+import dao.DeptDAO;
+import dao.DeptDAOImpl;
 import dao.EmployeeDAO;
 import dao.EmployeeDAOImpl;
+import entities.Dept;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
