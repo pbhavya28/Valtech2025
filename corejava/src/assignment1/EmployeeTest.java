@@ -177,24 +177,7 @@ class EmployeeTest{
 	}
 	
 	
-	@Test
-	void testNow() {
-//		addEmployees().forEach(e -> System.out.println(e));
-//		getEmployeeBySalary(80000f).forEach(e->System.out.println(e));
-//		sortedEmployees().forEach(e->System.out.println(e));
-//		getEmployeeByName("kusum").forEach(e->System.out.println(e));
-//		getEmployeeByLevel(6).forEach(e->System.out.println(e));
-//		getEmployeeByNameContains("um").forEach(e->System.out.println(e));
-//		getEmployeeByLevelAndSalary(6,40000f).forEach(e->System.out.println(e));
-//		System.out.println(getSumOfSalByLevel(6));
-//		System.out.println(getSumOfSalByAge(25));
-//		MapEmployeesByAge().forEach(e->System.out.println(e));
-//		employeesListByGender().forEach((gender, names) -> {
-//	          System.out.println("Gender: " + gender);
-//	          System.out.println("Employees: " + names);});
-		System.out.println(sortByNameDesc());
 
-	}
 	
 	@Test
 	void testUsingAsserts() {
@@ -216,7 +199,24 @@ class EmployeeTest{
 //		System.out.println(getEmployeeByLevel(6).size());
 //		System.out.println(getEmployeeByLevelAndSalary(6,40000f).size());
 	}
-	
+//	@Test
+//	void testNow() {
+//		addEmployees().forEach(e -> System.out.println(e));
+//		getEmployeeBySalary(80000f).forEach(e->System.out.println(e));
+//		sortedEmployees().forEach(e->System.out.println(e));
+//		getEmployeeByName("kusum").forEach(e->System.out.println(e));
+//		getEmployeeByLevel(6).forEach(e->System.out.println(e));
+//		getEmployeeByNameContains("um").forEach(e->System.out.println(e));
+//		getEmployeeByLevelAndSalary(6,40000f).forEach(e->System.out.println(e));
+//		System.out.println(getSumOfSalByLevel(6));
+//		System.out.println(getSumOfSalByAge(25));
+//		MapEmployeesByAge().forEach(e->System.out.println(e));
+//		employeesListByGender().forEach((gender, names) -> {
+//	          System.out.println("Gender: " + gender);
+//	          System.out.println("Employees: " + names);});
+//		System.out.println(sortByNameDesc());
+
+//	}
 	
 	
 	
