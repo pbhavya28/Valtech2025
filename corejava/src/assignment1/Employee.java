@@ -201,6 +201,7 @@ public class Employee implements Comparable<Employee> {
 		}
 		
 	    
+<<<<<<< HEAD
 
 		
 //		public static void main(String[] args) {
@@ -418,6 +419,9 @@ public class Employee implements Comparable<Employee> {
 //		;
 //		}
 //		
+=======
+		
+>>>>>>> refs/remotes/origin/main
 	}
 
 
